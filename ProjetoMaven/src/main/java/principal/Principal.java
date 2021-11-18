@@ -74,6 +74,8 @@ public class Principal {
 		Veiculo v2 = em.find(Veiculo.class,2); */
 		
 		
+		System.out.println("Projeto Teste");
+		
 		
 		//Pessoa pessoa = em.find(Pessoa.class, 1);
 		
