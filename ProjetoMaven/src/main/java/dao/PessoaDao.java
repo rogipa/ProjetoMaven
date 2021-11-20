@@ -102,14 +102,33 @@ public class PessoaDao {
 		
 	}
 	
-	public long somaQtdCarros(Pessoa p) {
+	public List<Pessoa> somaQtdCarros(String nome) {
 		
-		TypedQuery<Long> query = em.createQuery("select COUNT(p) from Pessoa p join p.veiculo on p.id = :idpessoa",Long.class);
-		query.setParameter("idpessoa", p.getId());
+		TypedQuery<Pessoa> query = em.createQuery("select p from Pessoa p join p.veiculo on p.nome  like :nomepessoa",Pessoa.class);
+		query.setParameter("nomepessoa", "%" +   nome + "%");
+		
+		return query.getResultList();
+		
+		
+		
+	}
+	
+	public Number contarLetras(int id) {
+		
+		TypedQuery<Number> query = em.createQuery("select LENGTH(p.nome) from Pessoa p where p.id= :idpessoa", Number.class);
+		query.setParameter("idpessoa", id);
 		
 		return query.getSingleResult();
 		
+	}
+	
+	public Pessoa somaVeiculoNome(int id) {
 		
+		TypedQuery<Pessoa> query = em.createQuery("select NEW basica.Pessoa(p.nome, p.email, COUNT(p))  "
+				+ "from Pessoa p join p.veiculo on p.id = :idpessoa GROUP BY p.nome, p.email",Pessoa.class);
+		query.setParameter("idpessoa", id);
+		
+		return query.getSingleResult();
 		
 	}
 	

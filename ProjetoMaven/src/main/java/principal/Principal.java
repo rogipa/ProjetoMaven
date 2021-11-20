@@ -33,6 +33,15 @@ public class Principal {
 		
 		PessoaDao pessoa = new PessoaDao();
 		
+		pessoa.somaQtdCarros("celine").forEach(System.out::println);
+		
+		
+		Pessoa p = new Pessoa();
+		
+//		p = pessoa.somaVeiculoNome(2);
+		
+//		System.out.println("nome = "+ p.getNome() + " email = " + p.getEmail() + " quantidade veiculo = "+p.getQtdVeiculo());
+		
 		
 		
 		

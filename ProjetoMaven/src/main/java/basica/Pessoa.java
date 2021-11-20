@@ -27,6 +27,9 @@ public class Pessoa implements Serializable {
 	private String nome;
 	private String email;
 	
+	@Transient
+	private long qtdVeiculo;
+	
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="pessoa_id")
@@ -37,6 +40,12 @@ public class Pessoa implements Serializable {
 
 	public Pessoa() {}
 	
+	public Pessoa(String nome, String email, long qtdVeiculo) {
+		this.nome = nome;
+		this.email = email;
+		this.qtdVeiculo = qtdVeiculo;
+	}
+	
 
 	public Pessoa(String nome, String email) {
 		super();
@@ -46,8 +55,16 @@ public class Pessoa implements Serializable {
 	}
 	
 	
+	
 
 
+	public long getQtdVeiculo() {
+		return qtdVeiculo;
+	}
+
+	public void setQtdVeiculo(long qtdVeiculo) {
+		this.qtdVeiculo = qtdVeiculo;
+	}
 
 	public Endereco getEndereco() {
 		return endereco;
