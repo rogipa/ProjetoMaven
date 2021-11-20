@@ -102,12 +102,12 @@ public class PessoaDao {
 		
 	}
 	
-	public List<Pessoa> somaQtdCarros(String nome) {
+	public Number somaQtdCarros(int id) {
 		
-		TypedQuery<Pessoa> query = em.createQuery("select p from Pessoa p join p.veiculo on p.nome  like :nomepessoa",Pessoa.class);
-		query.setParameter("nomepessoa", "%" +   nome + "%");
+		TypedQuery<Number> query = em.createQuery("select COUNT(p) from Pessoa p join p.veiculo on p.id = :nomepessoa",Number.class);
+		query.setParameter("nomepessoa", "%" +   id + "%");
 		
-		return query.getResultList();
+		return query.getSingleResult();
 		
 		
 		

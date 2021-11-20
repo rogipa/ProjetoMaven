@@ -33,7 +33,7 @@ public class Principal {
 		
 		PessoaDao pessoa = new PessoaDao();
 		
-		pessoa.somaQtdCarros("celine").forEach(System.out::println);
+		System.out.println(pessoa.somaQtdCarros(2));
 		
 		
 		Pessoa p = new Pessoa();
